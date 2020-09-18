@@ -3,9 +3,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import {Box} from "@material-ui/core";
+import {Link as RouterLink} from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -42,14 +43,17 @@ export default function StaffAppBar() {
         <>
             <AppBar position="static">
                 <Toolbar className={classes.toolbar}>
-                    <IconButton
-                        edge="start"
-                        className={classes.navigationButton}
-                        color="inherit"
-                        aria-label="open drawer"
-                    >
-                        <KeyboardBackspaceIcon />
-                    </IconButton>
+                    <RouterLink to="/" style={{color: "white", textDecoration: "none"}}>
+                        <IconButton
+                            edge="start"
+                            className={classes.navigationButton}
+                            color="inherit"
+                            aria-label="open drawer"
+                        >
+                            <KeyboardBackspaceIcon/>
+                        </IconButton>
+                    </RouterLink>
+
                     <Typography className={classes.title} variant="h5" noWrap>
                         Specno
                     </Typography>

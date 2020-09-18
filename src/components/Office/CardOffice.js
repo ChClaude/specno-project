@@ -10,9 +10,10 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
-import {Typography} from "@material-ui/core";
+import {CardContent, Typography} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import CustomMenu from "../CustomMenu";
+import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     cardContainer: {
@@ -104,11 +105,14 @@ export default function CardOffice() {
 
                     <CustomMenu anchorEl={anchorEl} handleClose={handleClose}/>
 
+
                     <CardActions disableSpacing>
 
                         <Link href="#" onClick={preventDefault}>
                             info@specno.com
                         </Link>
+                        <RouterLink to="/offices/1" style={{marginLeft: "8px", position: "relative", bottom: "25px"}}>View</RouterLink>
+
 
                         <Box
                             className={classes.cardActionBox}
