@@ -1,22 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="594d04ec-3d1e-43b1-9860-745b64156b15" name="Default Changelist" comment="" />
+    <list default="true" id="594d04ec-3d1e-43b1-9860-745b64156b15" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/CustomMenu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Staff/AddStaff.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Staff/AppBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Staff/EditStaff.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Staff/RemoveStaff.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Staff/SearchBox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Staff/Staff.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/OfficeView.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Offices.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddOfficeForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Office/AddOfficeForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AppBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Office/AppBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CardOffice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Office/CardOffice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EditOfficeForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Office/EditOfficeForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RemoveOfficeForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Office/RemoveOfficeForm.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1hbp82wOu3TneW5E2XDMnZBBnxy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Christ\WebstormProjects\specno-project\src\components\Office" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -26,11 +64,31 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1600289496320</updated>
-      <workItem from="1600289502216" duration="2550000" />
+      <workItem from="1600289502216" duration="3925000" />
+      <workItem from="1600335487197" duration="38496000" />
+      <workItem from="1600421177667" duration="17807000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1345" height="179" key="GridCell.Tab.0.bottom" timestamp="1600295384575">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1600295384575" />
+    <state width="1345" height="179" key="GridCell.Tab.0.center" timestamp="1600295384575">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1600295384575" />
+    <state width="1345" height="179" key="GridCell.Tab.0.left" timestamp="1600295384575">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1600295384575" />
+    <state width="1345" height="179" key="GridCell.Tab.0.right" timestamp="1600295384575">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1600295384575" />
   </component>
 </project>

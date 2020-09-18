@@ -12,13 +12,7 @@ import Paper from "@material-ui/core/Paper";
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import {Typography} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
-import MenuItem from '@material-ui/core/MenuItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import withStyles from "@material-ui/core/styles/withStyles";
-import Menu from "@material-ui/core/Menu";
-import EditIcon from '@material-ui/icons/Edit';
-import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import CustomMenu from "../CustomMenu";
 
 const useStyles = makeStyles((theme) => ({
     cardContainer: {
@@ -69,37 +63,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const StyledMenu = withStyles({
-    paper: {
-        border: '1px solid #d3d4d5',
-    },
-})((props) => (
-    <Menu
-        elevation={0}
-        getContentAnchorEl={null}
-        anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
-        }}
-        transformOrigin={{
-            vertical: 'top',
-            horizontal: 'center',
-        }}
-        {...props}
-    />
-));
-
-const StyledMenuItem = withStyles((theme) => ({
-    root: {
-        '&:focus': {
-            backgroundColor: theme.palette.primary.main,
-            '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-                color: theme.palette.common.white,
-            },
-        },
-    },
-}))(MenuItem);
-
 
 export default function CardOffice() {
     const classes = useStyles();
@@ -139,28 +102,7 @@ export default function CardOffice() {
                         subheader="Address"
                     />
 
-
-                    <StyledMenu
-                        id="customized-menu"
-                        anchorEl={anchorEl}
-                        keepMounted
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
-                    >
-                        <StyledMenuItem>
-                            <ListItemText primary="Edit" className={classes.listItemText}/>
-                            <ListItemIcon className={classes.listItemIcon}>
-                                <EditIcon fontSize="small"/>
-                            </ListItemIcon>
-                        </StyledMenuItem>
-                        <StyledMenuItem>
-                            <ListItemText primary="Remove" className={classes.listItemText}/>
-                            <ListItemIcon className={classes.listItemIcon}>
-                                <RemoveCircleIcon fontSize="small"/>
-                            </ListItemIcon>
-                        </StyledMenuItem>
-                    </StyledMenu>
-
+                    <CustomMenu anchorEl={anchorEl} handleClose={handleClose}/>
 
                     <CardActions disableSpacing>
 
