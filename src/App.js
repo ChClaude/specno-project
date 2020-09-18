@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
+import AppBar from "./components/AppBar";
 import './App.css';
+import {makeStyles} from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import {Container} from "@material-ui/core";
+import CardOffice from "./components/CardOffice";
+// import EditOfficeForm from "./components/EditOfficeForm";
+import RemoveOfficeForm from "./components/RemoveOfficeForm";
+// import AddOfficeForm from "./components/AddOfficeForm";
+
+const useStyles = makeStyles((theme) => ({
+    gridContainer: {
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(2),
+    }
+}));
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const classes = useStyles();
+
+    return (
+        <>
+            <AppBar/>
+            <Container>
+                <Grid container spacing={3} className={classes.gridContainer}>
+                    <Grid item xs={12}>
+                        <CardOffice/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <RemoveOfficeForm />
+                    </Grid>
+                </Grid>
+            </Container>
+        </>
+    );
 }
 
 export default App;
