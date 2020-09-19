@@ -7,7 +7,6 @@ import SearchBox from "../components/Staff/SearchBox";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Staff from "../components/Staff/Staff";
-import RemoveStaff from "../components/Staff/RemoveStaff";
 
 
 const useStyles = makeStyles((theme) => ({

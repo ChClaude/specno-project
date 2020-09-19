@@ -10,7 +10,7 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
-import {CardContent, Typography} from "@material-ui/core";
+import {Typography} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import CustomMenu from "../CustomMenu";
 import { Link as RouterLink } from "react-router-dom";
