@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="594d04ec-3d1e-43b1-9860-745b64156b15" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/actions/officeActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/officeReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/firebase/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/OfficeView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Office.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/officeActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/officeActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Office/CardOffice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Office/CardOffice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Staff/AppBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Staff/AppBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Offices.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Offices.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +42,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -60,7 +61,7 @@
       <workItem from="1600289502216" duration="3925000" />
       <workItem from="1600335487197" duration="38496000" />
       <workItem from="1600421177667" duration="24500000" />
-      <workItem from="1600504588575" duration="15133000" />
+      <workItem from="1600504588575" duration="25853000" />
     </task>
     <servers />
   </component>

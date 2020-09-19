@@ -14,13 +14,14 @@ import {Typography} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import CustomMenu from "../CustomMenu";
 import { Link as RouterLink } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
     cardContainer: {
         display: "inline-block",
-        maxWidth: 350,
+        width: 450,
         minWidth: 290,
-        height: 123,
+        height: 150,
         borderRadius: '0 4px 4px 0'
     },
     media: {
@@ -43,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         backgroundColor: theme.palette.primary.main,
         width: '100%',
-        height: 123,
+        height: 150,
         borderRadius: '4px 0 0 4px',
         color: 'white',
         flexFlow: 'column',
@@ -65,10 +66,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function CardOffice() {
+export default function CardOffice({ office }) {
     const classes = useStyles();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const {id, name, location, email, tellNumber, maxNumOcpts, color} = office;
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -87,7 +89,7 @@ export default function CardOffice() {
                 <Paper elevation={2} className={classes.sidePaper}>
                     <PeopleAltIcon className={classes.peopleAltIcon}/>
                     <Typography>
-                        04/20
+                        04/{maxNumOcpts}
                     </Typography>
                 </Paper>
             </Grid>
@@ -99,8 +101,8 @@ export default function CardOffice() {
                                 <MoreVertIcon/>
                             </IconButton>
                         }
-                        title="Office Name"
-                        subheader="Address"
+                        title={name}
+                        subheader={location}
                     />
 
                     <CustomMenu anchorEl={anchorEl} handleClose={handleClose}/>
@@ -109,9 +111,9 @@ export default function CardOffice() {
                     <CardActions disableSpacing>
 
                         <Link href="#" onClick={preventDefault}>
-                            info@specno.com
+                            { email }
                         </Link>
-                        <RouterLink to="/offices/1" style={{marginLeft: "8px", position: "relative", bottom: "25px"}}>View</RouterLink>
+                        <RouterLink to={`/offices/${id}`} style={{marginLeft: "8px", position: "relative", bottom: "25px"}}>View</RouterLink>
 
 
                         <Box
@@ -120,7 +122,7 @@ export default function CardOffice() {
                         >
                             <PhoneIcon color="action" className={classes.phoneIcon}/>
                             <Link href="#" onClick={preventDefault}>
-                                083 256 1245
+                                { tellNumber }
                             </Link>
                         </Box>
 
@@ -130,3 +132,7 @@ export default function CardOffice() {
         </Grid>
     );
 }
+
+CardOffice.propTypes = {
+    office: PropTypes.object.isRequired
+};

@@ -65,7 +65,7 @@ export default function StaffAppBar() {
                             Email: <span>info@specno.com</span>
                         </Typography>
                         <Typography className={classes.title} variant="body1" noWrap>
-                            Office Tell: <span>07 4895 4636</span>
+                            Office Tell: <span>083 256 1245</span>
                         </Typography>
                         <Typography className={classes.title} variant="body1" noWrap>
                             Max Capacity: <span>9</span>

@@ -1,12 +1,21 @@
 import { GET_OFFICES } from "./types";
+import firebase from "../firebase";
 
 export const getOffices = () => dispatch => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-        .then(res => res.json())
-        .then(offices => {
-            dispatch({
-                type: GET_OFFICES,
-                payload: offices
+    firebase.db.collection("offices").get().then((querySnapshot) => {
+        let offices = [];
+
+        querySnapshot.forEach((doc) => {
+            offices.push({
+                id: doc.id,
+                ...doc.data()
             });
+
         });
+
+        dispatch({
+            type: GET_OFFICES,
+            payload: offices
+        });
+    });
 }
