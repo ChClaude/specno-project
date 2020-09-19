@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function OfficeAppBar() {
+export default function OfficeAppBar({onAddOfficeClick}) {
     const classes = useStyles();
 
     return (
@@ -27,11 +28,15 @@ export default function OfficeAppBar() {
                     <Typography variant="h6" className={classes.title}>
                         Office Man
                     </Typography>
-                    <Button variant="contained">
+                    <Button variant="contained" onClick={onAddOfficeClick}>
                         Add Office
                     </Button>
                 </Toolbar>
             </AppBar>
         </div>
     );
+}
+
+OfficeAppBar.propTypes = {
+    onAddOfficeClick: PropTypes.func.isRequired
 }

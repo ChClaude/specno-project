@@ -2,17 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="594d04ec-3d1e-43b1-9860-745b64156b15" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/firebase/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/officeActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/officeActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Office/CardOffice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Office/CardOffice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Staff/AppBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Staff/AppBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Office/AppBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Office/AppBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Offices.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Offices.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/officeReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/officeReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +57,7 @@
       <workItem from="1600289502216" duration="3925000" />
       <workItem from="1600335487197" duration="38496000" />
       <workItem from="1600421177667" duration="24500000" />
-      <workItem from="1600504588575" duration="25853000" />
+      <workItem from="1600504588575" duration="27452000" />
     </task>
     <servers />
   </component>

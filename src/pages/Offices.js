@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import {Container} from "@material-ui/core";
 import CardOffice from "../components/Office/CardOffice";
 import {connect} from "react-redux";
-import {getOffices} from "../actions/officeActions";
+import {getOffices, addOffice} from "../actions/officeActions";
 import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Offices = ({getOffices, offices}) => {
+const Offices = ({getOffices, addOffice, offices}) => {
 
     const classes = useStyles();
 
@@ -25,11 +25,13 @@ const Offices = ({getOffices, offices}) => {
         console.log("loop");
     }, [getOffices]);
 
-    console.log(offices);
+    const handleOnAddOfficeClick = () => {
+        console.log("add office click");
+    };
 
     return (
         <>
-            <AppBar/>
+            <AppBar onAddOfficeClick={handleOnAddOfficeClick} />
             <Container>
                 <Grid container spacing={3} className={classes.gridContainer}>
                     {offices.length > 0 && offices.map((office) => (
@@ -45,6 +47,7 @@ const Offices = ({getOffices, offices}) => {
 
 Offices.propTypes = {
     getOffices: PropTypes.func.isRequired,
+    addOffice: PropTypes.func.isRequired,
     offices: PropTypes.array.isRequired
 };
 
@@ -52,4 +55,4 @@ const mapStateToProps = state => ({
     offices: state.offices.items
 });
 
-export default connect(mapStateToProps, {getOffices})(Offices);
+export default connect(mapStateToProps, {getOffices, addOffice})(Offices);
