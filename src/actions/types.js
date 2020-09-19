@@ -1,0 +1,1 @@
+export const GET_OFFICES = "GET_OFFICES";

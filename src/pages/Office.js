@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const OfficeView = () => {
+const Office = () => {
 
     const classes = useStyles();
 
@@ -49,4 +49,4 @@ const OfficeView = () => {
     );
 };
 
-export default OfficeView;
+export default Office;
