@@ -24,8 +24,10 @@ const Offices = ({getOffices, offices}) => {
 
     const classes = useStyles();
     const [showAddOfficeForm, setShowAddOfficeForm] = React.useState(false)
-    const [showEditOfficeForm, setShowEditOfficeForm] = React.useState(false)
+    // const [showEditOfficeForm, setShowEditOfficeForm] = React.useState(false)
     const [showRemoveOfficeForm, setShowRemoveOfficeForm] = React.useState(false)
+
+    const [displayFormChecks, setDisplayFormChecks] = React.useState([]);
 
     useEffect(() => {
         getOffices();  // call to firebase data
@@ -33,16 +35,53 @@ const Offices = ({getOffices, offices}) => {
         console.log("loop");
     }, [getOffices,]);
 
+    useEffect(() => {
+        let values = [];
+
+        if (offices.length > 0) {
+            offices.map(office => {
+                values.push({id: office.id, showEditOfficeForm: false, showRemoveOfficeForm: false})
+            });
+            setDisplayFormChecks(values);
+        }
+
+    }, [offices]);
+
     const handleOnAddOfficeClick = () => {
         setShowAddOfficeForm(!showAddOfficeForm);
     };
 
-    const handleEditMenuItemClick = () => {
-        setShowEditOfficeForm(!showEditOfficeForm);
+    const handleEditMenuItemClick = (id) => {
+
+        let currentIndex;
+
+        let displayValues = [...displayFormChecks];
+
+        console.log(displayValues);
+
+        displayFormChecks.forEach((value, index) => {
+            if (value.id === id) {
+                currentIndex = index;
+                displayValues[index].showEditOfficeForm = !displayValues[index].showEditOfficeForm;
+                setDisplayFormChecks(displayValues);
+            }
+        });
+
     };
 
-    const handleDeleteMenuItemClick = () => {
-        setShowRemoveOfficeForm(!showRemoveOfficeForm);
+    const handleDeleteMenuItemClick = (id) => {
+
+        let currentIndex;
+
+        let displayValues = [...displayFormChecks];
+
+        displayFormChecks.forEach((value, index) => {
+            if (value.id === id) {
+                currentIndex = index;
+                displayValues[index].showRemoveOfficeForm = !displayValues[index].showRemoveOfficeForm;
+                setDisplayFormChecks(displayValues);
+            }
+        });
     };
 
 
@@ -51,21 +90,34 @@ const Offices = ({getOffices, offices}) => {
             <AppBar onAddOfficeClick={handleOnAddOfficeClick}/>
             <Container>
                 <Grid container spacing={3} className={classes.gridContainer}>
-                    {offices.length > 0 && offices.map((office) => (
-                        <Grid item xs={12} key={office.id}>
-                            <CardOffice office={office} onEditMenuItemClick={handleEditMenuItemClick} onDeleteMenuItemClick={handleDeleteMenuItemClick}/>
-                        </Grid>
-                    ))}
+                    {offices.length && displayFormChecks.length && offices.map((office) => {
+
+                        let currentIndex;
+                        displayFormChecks.forEach((value, index) => {
+                            if (value.id === office.id) {
+                                currentIndex = index;
+                            }
+                        });
+
+
+                        return (<Grid item xs={12} key={office.id} id={office.id}>
+                            <CardOffice office={office} onEditMenuItemClick={() => handleEditMenuItemClick(office.id)}
+                                        onDeleteMenuItemClick={() => handleDeleteMenuItemClick(office.id)}/>
+
+                            <div className={clsx("removeofficeform", displayFormChecks[currentIndex].showRemoveOfficeForm && "show")}>
+                                <RemoveOfficeForm onCloseRemoveForm={() => handleDeleteMenuItemClick(office.id)} office={office}/>
+                            </div>
+
+                            <div className={clsx("editofficeform", displayFormChecks[currentIndex].showEditOfficeForm && "show")}>
+                                <EditOfficeForm onCloseEditOfficeForm={() => handleEditMenuItemClick(office.id)} office={office}/>
+                            </div>
+                        </Grid>);
+
+                    })}
                 </Grid>
             </Container>
-            <div className={clsx("addofficeform", !showAddOfficeForm && "hide")}>
+            <div className={clsx("addofficeform", showAddOfficeForm && "show")}>
                 <AddOfficeForm onAddOfficeClick={handleOnAddOfficeClick} />
-            </div>
-            <div className={clsx("removeofficeform", !showRemoveOfficeForm && "hide")}>
-                <RemoveOfficeForm onCloseRemoveForm={handleDeleteMenuItemClick}/>
-            </div>
-            <div className={clsx("editofficeform", !showEditOfficeForm && "hide")}>
-                <EditOfficeForm onCloseEditOfficeForm={handleEditMenuItemClick} />
             </div>
         </>
     );

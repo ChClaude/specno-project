@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function RemoveOfficeForm({onCloseRemoveForm}) {
+export default function RemoveOfficeForm({ office, onCloseRemoveForm }) {
     const classes = useStyles();
 
 
@@ -64,7 +64,7 @@ export default function RemoveOfficeForm({onCloseRemoveForm}) {
                             Are you sure <br/>you want to <span className={classes.removeColor}>Remove</span>
                         </Typography>
                         <Typography variant="h4" style={{margin: '30px 0'}}>
-                            Office Name
+                            {office.name}
                         </Typography>
                     </div>
                     <Button variant="contained" size="large" className={classes.removeBtn}>
@@ -78,5 +78,6 @@ export default function RemoveOfficeForm({onCloseRemoveForm}) {
 }
 
 RemoveOfficeForm.propTypes = {
-    onCloseRemoveForm: PropTypes.func.isRequired
+    onCloseRemoveForm: PropTypes.func.isRequired,
+    office: PropTypes.object.isRequired
 };

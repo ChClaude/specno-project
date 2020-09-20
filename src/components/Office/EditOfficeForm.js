@@ -49,13 +49,42 @@ const colors = [
     }
 ];
 
-export default function EditOfficeForm({ onCloseEditOfficeForm }) {
+export default function EditOfficeForm({ office, onCloseEditOfficeForm }) {
     const classes = useStyles();
 
-    const [color, setColor] = React.useState('blue');
+    const [name, setName] = React.useState(office.name);
+    const [location, setLocation] = React.useState(office.location);
+    const [email, setEmail] = React.useState(office.email);
+    const [tellNumber, setTellNumber] = React.useState(office.tellNumber);
+    const [maxNumOccupants, setMaxNumOccupants] = React.useState(office.maxNumOccupants);
+    const [color, setColor] = React.useState(office.color);
 
-    const handleColorChange = (event) => {
-        setColor(event.target.value);
+
+
+    const handleOnChange = (event) => {
+
+        switch (event.target.name) {
+            case "name" :
+                setName(event.target.value);
+                break;
+            case "location" :
+                setLocation(event.target.value);
+                break;
+            case "email" :
+                setEmail(event.target.value);
+                break;
+            case "tellNumber" :
+                setTellNumber(event.target.value);
+                break;
+            case "maxNumOccupants" :
+                setMaxNumOccupants(event.target.value);
+                break;
+            case "color":
+                setColor(event.target.value);
+                break;
+            default:
+                return;
+        }
     };
 
     return (
@@ -75,10 +104,12 @@ export default function EditOfficeForm({ onCloseEditOfficeForm }) {
                     <form className={classes.formRoot}>
                         <div>
                             <TextField
-                                id="office"
+                                id="name"
                                 label="Office Name"
-                                name="office"
+                                name="name"
                                 type="text"
+                                value={name}
+                                onChange={handleOnChange}
                                 fullWidth
                             />
                         </div>
@@ -88,6 +119,8 @@ export default function EditOfficeForm({ onCloseEditOfficeForm }) {
                                 label="Email Address"
                                 name="email"
                                 type="email"
+                                value={email}
+                                onChange={handleOnChange}
                                 fullWidth
                             />
                         </div>
@@ -97,24 +130,30 @@ export default function EditOfficeForm({ onCloseEditOfficeForm }) {
                                 label="Office Tell"
                                 name="telephone"
                                 type="tel"
+                                value={tellNumber}
+                                onChange={handleOnChange}
                                 fullWidth
                             />
                         </div>
                         <div>
                             <TextField
-                                id="address"
+                                id="location"
                                 label="Address"
-                                name="address"
+                                name="location"
                                 type="text"
+                                value={location}
+                                onChange={handleOnChange}
                                 fullWidth
                             />
                         </div>
                         <div>
                             <TextField
-                                id="maxNumOcp"
+                                id="maxNumOccupants"
                                 label="Max Number of Occupants"
-                                name="maxNumOcp"
+                                name="maxNumOccupants"
                                 type="number"
+                                value={maxNumOccupants}
+                                onChange={handleOnChange}
                                 fullWidth
                             />
                         </div>
@@ -124,7 +163,7 @@ export default function EditOfficeForm({ onCloseEditOfficeForm }) {
                                 select
                                 label="Office Color"
                                 value={color}
-                                onChange={handleColorChange}
+                                onChange={handleOnChange}
                                 helperText="Please select your office color"
                             >
                                 {colors.map((option) => (
@@ -148,5 +187,6 @@ export default function EditOfficeForm({ onCloseEditOfficeForm }) {
 }
 
 EditOfficeForm.propTypes = {
-    onCloseEditOfficeForm: PropTypes.func.isRequired
+    onCloseEditOfficeForm: PropTypes.func.isRequired,
+    office: PropTypes.object.isRequired
 };
