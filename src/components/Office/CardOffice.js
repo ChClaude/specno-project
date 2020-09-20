@@ -70,7 +70,7 @@ export default function CardOffice({ office, onEditMenuItemClick, onDeleteMenuIt
     const classes = useStyles();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const {id, name, location, email, tellNumber, maxNumOccupants, color} = office;
+    const {id, name, location, email, tellNumber, maxNumOccupants} = office;
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);

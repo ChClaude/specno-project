@@ -24,8 +24,6 @@ const Offices = ({getOffices, offices}) => {
 
     const classes = useStyles();
     const [showAddOfficeForm, setShowAddOfficeForm] = React.useState(false)
-    // const [showEditOfficeForm, setShowEditOfficeForm] = React.useState(false)
-    const [showRemoveOfficeForm, setShowRemoveOfficeForm] = React.useState(false)
 
     const [displayFormChecks, setDisplayFormChecks] = React.useState([]);
 
@@ -39,7 +37,7 @@ const Offices = ({getOffices, offices}) => {
         let values = [];
 
         if (offices.length > 0) {
-            offices.map(office => {
+            offices.forEach(office => {
                 values.push({id: office.id, showEditOfficeForm: false, showRemoveOfficeForm: false})
             });
             setDisplayFormChecks(values);
@@ -52,16 +50,12 @@ const Offices = ({getOffices, offices}) => {
     };
 
     const handleEditMenuItemClick = (id) => {
-
-        let currentIndex;
-
         let displayValues = [...displayFormChecks];
 
         console.log(displayValues);
 
         displayFormChecks.forEach((value, index) => {
             if (value.id === id) {
-                currentIndex = index;
                 displayValues[index].showEditOfficeForm = !displayValues[index].showEditOfficeForm;
                 setDisplayFormChecks(displayValues);
             }
@@ -70,14 +64,10 @@ const Offices = ({getOffices, offices}) => {
     };
 
     const handleDeleteMenuItemClick = (id) => {
-
-        let currentIndex;
-
         let displayValues = [...displayFormChecks];
 
         displayFormChecks.forEach((value, index) => {
             if (value.id === id) {
-                currentIndex = index;
                 displayValues[index].showRemoveOfficeForm = !displayValues[index].showRemoveOfficeForm;
                 setDisplayFormChecks(displayValues);
             }

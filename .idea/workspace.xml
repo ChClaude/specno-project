@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="594d04ec-3d1e-43b1-9860-745b64156b15" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Office/EditOfficeForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Office/EditOfficeForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Office/RemoveOfficeForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Office/RemoveOfficeForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Offices.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Offices.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +53,7 @@
       <workItem from="1600335487197" duration="38496000" />
       <workItem from="1600421177667" duration="24500000" />
       <workItem from="1600504588575" duration="27749000" />
-      <workItem from="1600607589210" duration="26986000" />
+      <workItem from="1600607589210" duration="27615000" />
     </task>
     <servers />
   </component>
