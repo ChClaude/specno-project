@@ -52,7 +52,7 @@ const StyledMenuItem = withStyles((theme) => ({
 }))(MenuItem);
 
 
-export default function CustomMenu ({anchorEl, handleClose}) {
+export default function CustomMenu ({anchorEl, onClose, onEditMenuItemClick, onDeleteMenuItemClick}) {
 
     const classes = useStyles();
 
@@ -62,15 +62,15 @@ export default function CustomMenu ({anchorEl, handleClose}) {
             anchorEl={anchorEl}
             keepMounted
             open={Boolean(anchorEl)}
-            onClose={handleClose}
+            onClose={onClose}
         >
-            <StyledMenuItem>
+            <StyledMenuItem onClick={onEditMenuItemClick}>
                 <ListItemText primary="Edit" className={classes.listItemText}/>
                 <ListItemIcon className={classes.listItemIcon}>
                     <EditIcon fontSize="small"/>
                 </ListItemIcon>
             </StyledMenuItem>
-            <StyledMenuItem>
+            <StyledMenuItem onClick={onDeleteMenuItemClick}>
                 <ListItemText primary="Remove" className={classes.listItemText}/>
                 <ListItemIcon className={classes.listItemIcon}>
                     <RemoveCircleIcon fontSize="small"/>
@@ -82,5 +82,7 @@ export default function CustomMenu ({anchorEl, handleClose}) {
 
 CustomMenu.propTypes = {
     anchorEl: PropTypes.object,
-    handleClose: PropTypes.func.isRequired
+    onClose: PropTypes.func.isRequired,
+    onEditMenuItemClick: PropTypes.func.isRequired,
+    onDeleteMenuItemClick: PropTypes.func.isRequired
 };

@@ -6,6 +6,14 @@
     top: 0;
 }
 
+.removeofficeform {
+    min-height: 100vh;
+    width: 100%;
+    background-color: rgb(240, 240, 249);
+    position: fixed;
+    top: 0;
+}
+
 .show {
     display: block;
 }

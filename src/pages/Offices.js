@@ -9,6 +9,7 @@ import { getOffices} from "../actions/officeActions";
 import PropTypes from "prop-types";
 import AddOfficeForm from "../components/Office/AddOfficeForm";
 import clsx from "clsx";
+import RemoveOfficeForm from "../components/Office/RemoveOfficeForm";
 
 const useStyles = makeStyles((theme) => ({
     gridContainer: {
@@ -22,6 +23,8 @@ const Offices = ({getOffices, offices}) => {
 
     const classes = useStyles();
     const [showAddOfficeForm, setShowAddOfficeForm] = React.useState(false)
+    const [showEditOfficeForm, setShowEditOfficeForm] = React.useState(false)
+    const [showRemoveOfficeForm, setShowRemoveOfficeForm] = React.useState(false)
 
     useEffect(() => {
         getOffices();  // call to firebase data
@@ -33,6 +36,14 @@ const Offices = ({getOffices, offices}) => {
         setShowAddOfficeForm(!showAddOfficeForm);
     };
 
+    const handleEditMenuItemClick = () => {
+        console.log("Edit Menu Item");
+    };
+
+    const handleDeleteMenuItemClick = () => {
+        setShowRemoveOfficeForm(!showRemoveOfficeForm);
+    };
+
 
     return (
         <>
@@ -41,13 +52,16 @@ const Offices = ({getOffices, offices}) => {
                 <Grid container spacing={3} className={classes.gridContainer}>
                     {offices.length > 0 && offices.map((office) => (
                         <Grid item xs={12} key={office.id}>
-                            <CardOffice office={office}/>
+                            <CardOffice office={office} onEditMenuItemClick={handleEditMenuItemClick} onDeleteMenuItemClick={handleDeleteMenuItemClick}/>
                         </Grid>
                     ))}
                 </Grid>
             </Container>
             <div className={clsx("addofficeform", !showAddOfficeForm && "hide")}>
                 <AddOfficeForm onAddOfficeClick={handleOnAddOfficeClick} />
+            </div>
+            <div className={clsx("removeofficeform", !showRemoveOfficeForm && "hide")}>
+                <RemoveOfficeForm onCloseRemoveForm={handleDeleteMenuItemClick}/>
             </div>
         </>
     );

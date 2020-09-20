@@ -1,4 +1,4 @@
-import { GET_OFFICES, ADD_OFFICE } from "./types";
+import {GET_OFFICES, ADD_OFFICE, REMOVE_OFFICE} from "./types";
 import firebase from "../firebase";
 
 export const getOffices = () => dispatch => {
@@ -51,15 +51,31 @@ export const addOffice = (office) => dispatch => {
     firebase.db.collection("offices").add(office)
         .then(function(docRef) {
             console.log("Document written with ID: ", docRef.id);
+            dispatch({
+                type: ADD_OFFICE,
+                payload: office
+            });
         })
         .catch(function(error) {
             console.error("Error adding document: ", error);
         });
-
-    dispatch({
-        type: ADD_OFFICE,
-        payload: office
-    });
 };
 
 
+export const removeOffice = (id) => dispatch => {
+    /*firebase.db.collection("offices").doc(id).delete().then(function() {
+        console.log("Document successfully deleted!");
+        dispatch({
+            type: REMOVE_OFFICE,
+            payload: id
+        });
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });*/
+
+    console.log(id);
+    dispatch({
+        type: REMOVE_OFFICE,
+        payload: id
+    });
+};

@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function CardOffice({ office }) {
+export default function CardOffice({ office, onEditMenuItemClick, onDeleteMenuItemClick }) {
     const classes = useStyles();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -105,7 +105,17 @@ export default function CardOffice({ office }) {
                         subheader={location}
                     />
 
-                    <CustomMenu anchorEl={anchorEl} handleClose={handleClose}/>
+                    <CustomMenu
+                        anchorEl={anchorEl}
+                        onClose={handleClose}
+                        onEditMenuItemClick={() => {
+                            handleClose();
+                            onEditMenuItemClick();
+                        }}
+                        onDeleteMenuItemClick={() => {
+                            handleClose();
+                            onDeleteMenuItemClick();
+                        }} />
 
 
                     <CardActions disableSpacing>
@@ -134,5 +144,7 @@ export default function CardOffice({ office }) {
 }
 
 CardOffice.propTypes = {
-    office: PropTypes.object.isRequired
+    office: PropTypes.object.isRequired,
+    onEditMenuItemClick: PropTypes.func.isRequired,
+    onDeleteMenuItemClick: PropTypes.func.isRequired
 };

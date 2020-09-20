@@ -5,8 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/officeActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/officeActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Office/AddOfficeForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Office/AddOfficeForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomMenu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Office/CardOffice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Office/CardOffice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Office/RemoveOfficeForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Office/RemoveOfficeForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Offices.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Offices.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/officeReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/officeReducer.js" afterDir="false" />
     </list>
@@ -58,7 +59,7 @@
       <workItem from="1600335487197" duration="38496000" />
       <workItem from="1600421177667" duration="24500000" />
       <workItem from="1600504588575" duration="27749000" />
-      <workItem from="1600607589210" duration="9947000" />
+      <workItem from="1600607589210" duration="13147000" />
     </task>
     <servers />
   </component>
