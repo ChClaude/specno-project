@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function RemoveOfficeForm() {
+export default function RemoveStaffForm() {
     const classes = useStyles();
 
 
