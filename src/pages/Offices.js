@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import AddOfficeForm from "../components/Office/AddOfficeForm";
 import clsx from "clsx";
 import RemoveOfficeForm from "../components/Office/RemoveOfficeForm";
+import EditOfficeForm from "../components/Office/EditOfficeForm";
 
 const useStyles = makeStyles((theme) => ({
     gridContainer: {
@@ -37,7 +38,7 @@ const Offices = ({getOffices, offices}) => {
     };
 
     const handleEditMenuItemClick = () => {
-        console.log("Edit Menu Item");
+        setShowEditOfficeForm(!showEditOfficeForm);
     };
 
     const handleDeleteMenuItemClick = () => {
@@ -62,6 +63,9 @@ const Offices = ({getOffices, offices}) => {
             </div>
             <div className={clsx("removeofficeform", !showRemoveOfficeForm && "hide")}>
                 <RemoveOfficeForm onCloseRemoveForm={handleDeleteMenuItemClick}/>
+            </div>
+            <div className={clsx("editofficeform", !showEditOfficeForm && "hide")}>
+                <EditOfficeForm onCloseEditOfficeForm={handleEditMenuItemClick} />
             </div>
         </>
     );

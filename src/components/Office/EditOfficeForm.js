@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
     formRoot: {
@@ -48,7 +49,7 @@ const colors = [
     }
 ];
 
-export default function EditOfficeForm() {
+export default function EditOfficeForm({ onCloseEditOfficeForm }) {
     const classes = useStyles();
 
     const [color, setColor] = React.useState('blue');
@@ -61,7 +62,7 @@ export default function EditOfficeForm() {
         <Box className={classes.xCenter}>
             <Grid container style={{maxWidth: '500px', minHeight: '800px'}}>
                 <Grid item xs={12} className={classes.closeIcon}>
-                    <IconButton aria-label="delete" className={classes.margin}>
+                    <IconButton aria-label="delete" className={classes.margin} onClick={onCloseEditOfficeForm} >
                         <CloseIcon fontSize="large"/>
                     </IconButton>
                 </Grid>
@@ -145,3 +146,7 @@ export default function EditOfficeForm() {
         </Box>
     );
 }
+
+EditOfficeForm.propTypes = {
+    onCloseEditOfficeForm: PropTypes.func.isRequired
+};
