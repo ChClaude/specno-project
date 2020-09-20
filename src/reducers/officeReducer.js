@@ -12,9 +12,13 @@ export default function (state = initialState, action) {
                 items: action.payload
             };
         case ADD_OFFICE:
+
+            let updatedItems = state.items;
+            updatedItems.unshift(action.payload);
+
             return {
                 ...state,
-                items: state.items.unshift(action.payload)
+                items: updatedItems
             }
         default:
             return state;

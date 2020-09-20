@@ -8,6 +8,9 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {addOffice} from "../../actions/officeActions";
 
 const useStyles = makeStyles((theme) => ({
     formRoot: {
@@ -48,20 +51,68 @@ const colors = [
     }
 ];
 
-export default function AddOfficeForm() {
+const AddOfficeForm = ({addOffice, onAddOfficeClick}) => {
     const classes = useStyles();
 
+    const [name, setName] = React.useState('');
+    const [location, setLocation] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [tellNumber, setTellNumber] = React.useState('');
+    const [maxNumOccupants, setMaxNumOccupants] = React.useState(1);
     const [color, setColor] = React.useState('blue');
 
-    const handleColorChange = (event) => {
-        setColor(event.target.value);
+    const handleOnChange = (event) => {
+
+        switch (event.target.name) {
+            case "name" :
+                setName(event.target.value);
+                break;
+            case "location" :
+                setLocation(event.target.value);
+                break;
+            case "email" :
+                setEmail(event.target.value);
+                break;
+            case "tellNumber" :
+                setTellNumber(event.target.value);
+                break;
+            case "maxNumOccupants" :
+                setMaxNumOccupants(event.target.value);
+                break;
+            case "color":
+                setColor(event.target.value);
+                break;
+            default:
+                return;
+        }
+    };
+
+    const handleOnSubmit = (event) => {
+        event.preventDefault();
+        const office = {
+            name: name,
+            location: location,
+            email: email,
+            tellNumber: tellNumber,
+            maxNumOccupants: maxNumOccupants,
+            color: color
+        };
+
+        setName('');
+        setLocation('');
+        setEmail('');
+        setTellNumber('');
+        setMaxNumOccupants(1);
+        setColor("blue");
+
+        addOffice(office);
     };
 
     return (
         <Box className={classes.xCenter}>
             <Grid container style={{maxWidth: '500px', minHeight: '800px'}}>
                 <Grid item xs={12} className={classes.closeIcon}>
-                    <IconButton aria-label="delete" className={classes.margin}>
+                    <IconButton onClick={onAddOfficeClick}>
                         <CloseIcon fontSize="large"/>
                     </IconButton>
                 </Grid>
@@ -71,13 +122,15 @@ export default function AddOfficeForm() {
                     </Typography>
                 </Grid>
                 <Grid item xs={12} className={classes.xCenter}>
-                    <form className={classes.formRoot}>
+                    <form className={classes.formRoot} onSubmit={handleOnSubmit}>
                         <div>
                             <TextField
-                                 id="office"
+                                 id="name"
                                  label="Office Name"
-                                 name="office"
+                                 name="name"
                                  type="text"
+                                 value={name}
+                                 onChange={handleOnChange}
                                  fullWidth
                             />
                         </div>
@@ -87,43 +140,52 @@ export default function AddOfficeForm() {
                                 label="Email Address"
                                 name="email"
                                 type="email"
+                                value={email}
+                                onChange={handleOnChange}
                                 fullWidth
                             />
                         </div>
                         <div>
                             <TextField
-                                id="tel"
+                                id="tellNumber"
                                 label="Office Tell"
-                                name="telephone"
+                                name="tellNumber"
                                 type="tel"
+                                value={tellNumber}
+                                onChange={handleOnChange}
                                 fullWidth
                             />
                         </div>
                         <div>
                             <TextField
-                                id="address"
-                                label="Address"
-                                name="address"
+                                id="location"
+                                label="location"
+                                name="location"
                                 type="text"
+                                value={location}
+                                onChange={handleOnChange}
                                 fullWidth
                             />
                         </div>
                         <div>
                             <TextField
-                                id="maxNumOcp"
+                                id="maxNumOccupants"
                                 label="Max Number of Occupants"
-                                name="maxNumOcp"
+                                name="maxNumOccupants"
                                 type="number"
+                                value={maxNumOccupants}
+                                onChange={handleOnChange}
                                 fullWidth
                             />
                         </div>
                         <div style={{ marginTop: '30px', display: 'flex', justifyContent: 'center'}}>
                             <TextField
-                                id="officeColor"
+                                id="color"
                                 select
                                 label="Office Color"
                                 value={color}
-                                onChange={handleColorChange}
+                                onChange={handleOnChange}
+                                name="color"
                                 helperText="Please select your office color"
                             >
                                 {colors.map((option) => (
@@ -134,7 +196,7 @@ export default function AddOfficeForm() {
                             </TextField>
                         </div>
                         <div style={{ marginTop: '30px'}}>
-                            <Button variant="contained" size="large" color="primary" style={{width: '100%'}}>
+                            <Button variant="contained" size="large" color="primary" style={{width: '100%'}} type="submit">
                                 Save Office
                             </Button>
                         </div>
@@ -145,3 +207,10 @@ export default function AddOfficeForm() {
         </Box>
     );
 }
+
+AddOfficeForm.propTypes = {
+    onAddOfficeClick: PropTypes.func.isRequired,
+    addOffice: PropTypes.func.isRequired
+};
+
+export default connect(null, { addOffice })(AddOfficeForm);

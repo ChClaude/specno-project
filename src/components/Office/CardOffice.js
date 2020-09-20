@@ -70,7 +70,7 @@ export default function CardOffice({ office }) {
     const classes = useStyles();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const {id, name, location, email, tellNumber, maxNumOcpts, color} = office;
+    const {id, name, location, email, tellNumber, maxNumOccupants, color} = office;
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -89,7 +89,7 @@ export default function CardOffice({ office }) {
                 <Paper elevation={2} className={classes.sidePaper}>
                     <PeopleAltIcon className={classes.peopleAltIcon}/>
                     <Typography>
-                        04/{maxNumOcpts}
+                        04/{maxNumOccupants}
                     </Typography>
                 </Paper>
             </Grid>

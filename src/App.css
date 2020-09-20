@@ -1,0 +1,15 @@
+.addofficeform {
+    min-height: 100%;
+    width: 100%;
+    background-color: rgb(240, 240, 249);
+    position: absolute;
+    top: 0;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}

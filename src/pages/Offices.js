@@ -5,33 +5,38 @@ import Grid from "@material-ui/core/Grid";
 import {Container} from "@material-ui/core";
 import CardOffice from "../components/Office/CardOffice";
 import {connect} from "react-redux";
-import {getOffices, addOffice} from "../actions/officeActions";
+import { getOffices} from "../actions/officeActions";
 import PropTypes from "prop-types";
+import AddOfficeForm from "../components/Office/AddOfficeForm";
+import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
     gridContainer: {
         marginTop: theme.spacing(2),
         marginBottom: theme.spacing(2),
-    }
+    },
 }));
 
 
-const Offices = ({getOffices, addOffice, offices}) => {
+const Offices = ({getOffices, offices}) => {
 
     const classes = useStyles();
+    const [showAddOfficeForm, setShowAddOfficeForm] = React.useState(false)
 
     useEffect(() => {
-        getOffices();
+        getOffices();  // call to firebase data
+
         console.log("loop");
-    }, [getOffices]);
+    }, [getOffices,]);
 
     const handleOnAddOfficeClick = () => {
-        console.log("add office click");
+        setShowAddOfficeForm(!showAddOfficeForm);
     };
+
 
     return (
         <>
-            <AppBar onAddOfficeClick={handleOnAddOfficeClick} />
+            <AppBar onAddOfficeClick={handleOnAddOfficeClick}/>
             <Container>
                 <Grid container spacing={3} className={classes.gridContainer}>
                     {offices.length > 0 && offices.map((office) => (
@@ -41,13 +46,15 @@ const Offices = ({getOffices, addOffice, offices}) => {
                     ))}
                 </Grid>
             </Container>
+            <div className={clsx("addofficeform", !showAddOfficeForm && "hide")}>
+                <AddOfficeForm onAddOfficeClick={handleOnAddOfficeClick} />
+            </div>
         </>
     );
 }
 
 Offices.propTypes = {
     getOffices: PropTypes.func.isRequired,
-    addOffice: PropTypes.func.isRequired,
     offices: PropTypes.array.isRequired
 };
 
@@ -55,4 +62,4 @@ const mapStateToProps = state => ({
     offices: state.offices.items
 });
 
-export default connect(mapStateToProps, {getOffices, addOffice})(Offices);
+export default connect(mapStateToProps, {getOffices})(Offices);
