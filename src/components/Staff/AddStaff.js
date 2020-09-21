@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
+// TODO Add Staff does not update the UI, look that up
 const AddStaff = ({onCloseAddOfficeForm, addStaff, id}) => {
     const classes = useStyles();
 
