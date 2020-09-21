@@ -31,7 +31,6 @@ const Office = (props) => {
         getStaff(match.params.officeId);
     }, [getStaff, match.params.officeId]);
 
-    console.log(staff);
 
     return (
         <div>

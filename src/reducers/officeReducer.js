@@ -1,4 +1,4 @@
-import {ADD_OFFICE, EDIT_OFFICE, GET_OFFICE, GET_OFFICES, GET_STAFF, REMOVE_OFFICE} from "../actions/types";
+import {ADD_OFFICE, EDIT_OFFICE, GET_OFFICE, GET_OFFICES, GET_STAFF, REMOVE_OFFICE, SET_STAFF} from "../actions/types";
 
 const initialState = {
     items: [],
@@ -53,6 +53,11 @@ export default function (state = initialState, action) {
                 items: updatedItems
             }
         case GET_STAFF:
+            return {
+                ...state,
+                staff: action.payload
+            }
+        case SET_STAFF:
             return {
                 ...state,
                 staff: action.payload

@@ -1,4 +1,4 @@
-import {ADD_OFFICE, EDIT_OFFICE, GET_OFFICE, GET_OFFICES, GET_STAFF, REMOVE_OFFICE} from "./types";
+import {ADD_OFFICE, EDIT_OFFICE, GET_OFFICE, GET_OFFICES, GET_STAFF, REMOVE_OFFICE, SET_STAFF} from "./types";
 import firebase from "../firebase";
 
 export const getOffices = () => dispatch => {
@@ -129,6 +129,13 @@ export const getStaff = (id) => dispatch => {
         }))
         .catch(() => console.log("Error getting the collection"));
 
+};
+
+export const setStaff = (staff) => dispatch => {
+    dispatch({
+        type: SET_STAFF,
+        payload: staff
+    });
 };
 
 export const addOffice = (office) => dispatch => {
