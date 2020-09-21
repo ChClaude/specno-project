@@ -25,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function EditStaff() {
+export default function EditStaffForm() {
+
     const classes = useStyles();
 
     return (
@@ -70,7 +71,6 @@ export default function EditStaff() {
                     </form>
                 </Grid>
             </Grid>
-
         </Box>
     );
 }

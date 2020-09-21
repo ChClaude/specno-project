@@ -26,22 +26,19 @@ const SearchBox = ({staff, setStaff}) => {
             );
 
             if (result) {
-                setStaff(result); // setStaff action
+                setStaff(result);
                 console.log(result);
             }
         } else {
             console.log("search value empty");
-            setStaff(initialStaffState); // setStaff action
+            setStaff(initialStaffState);
         }
     }
 
     useEffect(() => {
-
         if(staff.length > initialStaffState.length) {
             setInitialStaffState(staff);
         }
-
-        console.log("looping");
     }, [staff, initialStaffState.length]);
 
     return (

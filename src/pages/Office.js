@@ -12,6 +12,7 @@ import {getOffice, getStaff} from "../actions/officeActions";
 import {connect} from "react-redux";
 import AddStaff from "../components/Staff/AddStaff";
 import clsx from "clsx";
+import RemoveStaffForm from "../components/Staff/RemoveStaffForm";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -36,6 +37,14 @@ const Office = (props) => {
 
     const handleOnToggleStaffForm = () => {
         setShowAffOfficeForm(!showAffOfficeForm);
+    };
+
+    const handleOnDeleteMenuItemClick = () => {
+        console.log("On delete menu item click");
+    };
+
+    const handleOnEditMenuItemClick = () => {
+        console.log("On edit menu item click");
     };
 
 
@@ -63,7 +72,14 @@ const Office = (props) => {
 
                     {staff.map(personnel => (
                         <Grid item xs={12} key={personnel.id}>
-                            < Staff staffPersonnel={personnel}/>
+                            <Staff
+                                staffPersonnel={personnel}
+                                onDeleteMenuItemClick={handleOnDeleteMenuItemClick}
+                                onEditMenuItemClick={handleOnEditMenuItemClick}
+                            />
+                            <div className={clsx("removeofficeform")}>
+                                <RemoveStaffForm/>
+                            </div>
                         </Grid>
                     ))}
                 </Grid>

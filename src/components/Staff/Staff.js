@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Staff = ({staffPersonnel}) => {
+const Staff = ({staffPersonnel, onDeleteMenuItemClick, onEditMenuItemClick}) => {
 
     const classes = useStyles();
 
@@ -33,14 +33,6 @@ const Staff = ({staffPersonnel}) => {
 
     const handleClose = () => {
         setAnchorEl(null);
-    };
-
-    const handleOnDeleteMenuItemClick = () => {
-        console.log("On delete menu item click");
-    };
-
-    const handleOnEditMenuItemClick = () => {
-        console.log("On edit menu item click");
     };
 
     return (
@@ -62,8 +54,14 @@ const Staff = ({staffPersonnel}) => {
                     </IconButton>
                     <CustomMenu
                         anchorEl={anchorEl} onClose={handleClose}
-                        onDeleteMenuItemClick={handleOnDeleteMenuItemClick}
-                        onEditMenuItemClick={handleOnEditMenuItemClick}
+                        onDeleteMenuItemClick={(event) => {
+                            onDeleteMenuItemClick(event);
+                            handleClose();
+                        }}
+                        onEditMenuItemClick={(event) => {
+                            onEditMenuItemClick(event);
+                            handleClose();
+                        }}
                     />
                 </Grid>
             </Grid>
@@ -72,7 +70,9 @@ const Staff = ({staffPersonnel}) => {
 };
 
 Staff.propTypes = {
-    staffPersonnel: PropTypes.object.isRequired
+    staffPersonnel: PropTypes.object.isRequired,
+    onDeleteMenuItemClick: PropTypes.func.isRequired,
+    onEditMenuItemClick: PropTypes.func.isRequired,
 };
 
 export default Staff;

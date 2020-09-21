@@ -41,8 +41,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function RemoveStaffForm() {
-    const classes = useStyles();
 
+    const classes = useStyles();
 
     return (
         <Box className={classes.xCenter}>
