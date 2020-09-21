@@ -1,11 +1,11 @@
 import {
     ADD_OFFICE,
     ADD_STAFF,
-    EDIT_OFFICE,
+    EDIT_OFFICE, EDIT_STAFF,
     GET_OFFICE,
     GET_OFFICES,
     GET_STAFF,
-    REMOVE_OFFICE,
+    REMOVE_OFFICE, REMOVE_STAFF,
     SET_STAFF
 } from "../actions/types";
 
@@ -82,6 +82,29 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 staff: updatedStaff
+            }
+        case REMOVE_STAFF:
+            updatedStaff = state.staff;
+            updatedStaff = updatedStaff.filter(staffPersonnel => staffPersonnel.id !== action.payload);
+
+            return {
+                ...state,
+                items: updatedStaff
+            }
+        case EDIT_STAFF:
+            updatedStaff = state.staff;
+            for (let i = 0; i < updatedStaff.length; i++) {
+                if (updatedStaff[i].id === action.payload.id) {
+                    updatedStaff[i] = {
+                        ...action.payload
+                    };
+                    break;
+                }
+            }
+
+            return {
+                ...state,
+                items: updatedStaff
             }
         default:
             return state;

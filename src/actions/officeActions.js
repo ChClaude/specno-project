@@ -1,11 +1,11 @@
 import {
     ADD_OFFICE,
     ADD_STAFF,
-    EDIT_OFFICE,
+    EDIT_OFFICE, EDIT_STAFF,
     GET_OFFICE,
     GET_OFFICES,
     GET_STAFF,
-    REMOVE_OFFICE,
+    REMOVE_OFFICE, REMOVE_STAFF,
     SET_STAFF
 } from "./types";
 import firebase from "../firebase";
@@ -89,7 +89,6 @@ export const editOffice = (office) => dispatch => {
 };
 
 // Staff Actions
-
 export const getStaff = (id) => dispatch => {
     firebase.db.collection("offices").doc(id).collection("staff")
         .get()
@@ -134,5 +133,39 @@ export const addStaff = (id, staff) => dispatch => {
         })
         .catch(function (error) {
             console.error("Error adding staff: ", error);
+        });
+};
+
+export const removeStaff = (id, staffId) => dispatch => {
+    firebase.db.collection("offices")
+        .doc(id)
+        .collection("staff")
+        .doc(staffId)
+        .delete().then(function () {
+        console.log("Document successfully deleted!");
+        dispatch({
+            type: REMOVE_STAFF,
+            payload: staffId
+        });
+    }).catch(function (error) {
+        console.error("Error removing document: ", error);
+    });
+};
+
+export const editStaff = (id, staff) => dispatch => {
+    firebase.db.collection("offices")
+        .doc(id)
+        .collection("staff")
+        .doc(staff.id)
+        .set(staff)
+        .then(function () {
+            console.log("Staff successfully edited!");
+            dispatch({
+                type: EDIT_STAFF,
+                payload: staff
+            });
+        })
+        .catch(function (error) {
+            console.error("Error editing staff: ", error);
         });
 };
