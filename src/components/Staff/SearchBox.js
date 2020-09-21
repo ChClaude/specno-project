@@ -42,7 +42,7 @@ const SearchBox = ({staff, setStaff}) => {
         }
 
         console.log("looping");
-    }, [staff]);
+    }, [staff, initialStaffState.length]);
 
     return (
         <>
