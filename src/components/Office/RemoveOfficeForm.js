@@ -6,6 +6,8 @@ import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
+import {removeOffice} from "../../actions/officeActions";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
@@ -41,13 +43,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function RemoveOfficeForm({ office, onCloseRemoveForm }) {
+const RemoveOfficeForm = ({ office, onCloseRemoveForm, removeOffice }) => {
     const classes = useStyles();
 
+    const handleRemoveOffice = () => {
+        removeOffice(office);
+        onCloseRemoveForm();
+    };
 
     return (
         <Box className={classes.xCenter}>
-            <Grid container style={{maxWidth: '400px', minHeight: '370px'}}>
+            <Grid container style={{maxWidth: '400px', minHeight: '400px'}}>
                 <Grid item xs={12} className={classes.closeIcon}>
                     <IconButton aria-label="delete" className={classes.margin} onClick={onCloseRemoveForm}>
                         <CloseIcon fontSize="large"/>
@@ -67,7 +73,7 @@ export default function RemoveOfficeForm({ office, onCloseRemoveForm }) {
                             {office.name}
                         </Typography>
                     </div>
-                    <Button variant="contained" size="large" className={classes.removeBtn}>
+                    <Button variant="contained" size="large" className={classes.removeBtn} onClick={handleRemoveOffice}>
                         Remove Office
                     </Button>
                 </Grid>
@@ -78,6 +84,10 @@ export default function RemoveOfficeForm({ office, onCloseRemoveForm }) {
 }
 
 RemoveOfficeForm.propTypes = {
+    removeOffice: PropTypes.func.isRequired,
     onCloseRemoveForm: PropTypes.func.isRequired,
-    office: PropTypes.object.isRequired
+    office: PropTypes.object.isRequired,
+
 };
+
+export default connect(null, { removeOffice })(RemoveOfficeForm);

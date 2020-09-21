@@ -9,10 +9,10 @@
 }
 
 .removeofficeform {
-    min-height: 100vh;
+    min-height: 100%;
     width: 100%;
     background-color: rgb(240, 240, 249);
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     display: none;

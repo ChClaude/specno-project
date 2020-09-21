@@ -52,8 +52,6 @@ const Offices = ({getOffices, offices}) => {
     const handleEditMenuItemClick = (id) => {
         let displayValues = [...displayFormChecks];
 
-        console.log(displayValues);
-
         displayFormChecks.forEach((value, index) => {
             if (value.id === id) {
                 displayValues[index].showEditOfficeForm = !displayValues[index].showEditOfficeForm;

@@ -9,6 +9,8 @@ import Box from "@material-ui/core/Box";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {editOffice} from "../../actions/officeActions";
 
 const useStyles = makeStyles((theme) => ({
     formRoot: {
@@ -49,9 +51,10 @@ const colors = [
     }
 ];
 
-export default function EditOfficeForm({ office, onCloseEditOfficeForm }) {
+const EditOfficeForm = ({ office, onCloseEditOfficeForm, editOffice }) => {
     const classes = useStyles();
 
+    const [id] = React.useState(office.id);
     const [name, setName] = React.useState(office.name);
     const [location, setLocation] = React.useState(office.location);
     const [email, setEmail] = React.useState(office.email);
@@ -87,6 +90,32 @@ export default function EditOfficeForm({ office, onCloseEditOfficeForm }) {
         }
     };
 
+    const handleOnSubmit = (event) => {
+        event.preventDefault();
+
+        const office = {
+            id: id,
+            name: name,
+            location: location,
+            email: email,
+            tellNumber: tellNumber,
+            maxNumOccupants: maxNumOccupants,
+            color: color
+        };
+
+        setName('');
+        setLocation('');
+        setEmail('');
+        setTellNumber('');
+        setMaxNumOccupants(1);
+        setColor("blue");
+
+        onCloseEditOfficeForm();
+
+        editOffice(office);
+
+    };
+
     return (
         <Box className={classes.xCenter}>
             <Grid container style={{maxWidth: '500px', minHeight: '800px'}}>
@@ -101,7 +130,7 @@ export default function EditOfficeForm({ office, onCloseEditOfficeForm }) {
                     </Typography>
                 </Grid>
                 <Grid item xs={12} className={classes.xCenter}>
-                    <form className={classes.formRoot}>
+                    <form className={classes.formRoot} onSubmit={handleOnSubmit}>
                         <div>
                             <TextField
                                 id="name"
@@ -174,7 +203,7 @@ export default function EditOfficeForm({ office, onCloseEditOfficeForm }) {
                             </TextField>
                         </div>
                         <div style={{ marginTop: '30px'}}>
-                            <Button variant="contained" size="large" color="primary" style={{width: '100%'}}>
+                            <Button variant="contained" size="large" color="primary" style={{width: '100%'}} type="submit">
                                 Save Office
                             </Button>
                         </div>
@@ -187,6 +216,11 @@ export default function EditOfficeForm({ office, onCloseEditOfficeForm }) {
 }
 
 EditOfficeForm.propTypes = {
+    editOffice: PropTypes.func.isRequired,
     onCloseEditOfficeForm: PropTypes.func.isRequired,
     office: PropTypes.object.isRequired
 };
+
+export default connect(null, { editOffice })(EditOfficeForm);
+
+
