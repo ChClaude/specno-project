@@ -105,6 +105,8 @@ const AddOfficeForm = ({addOffice, onAddOfficeClick}) => {
         setMaxNumOccupants(1);
         setColor("blue");
 
+        onAddOfficeClick();
+
         addOffice(office);
     };
 
