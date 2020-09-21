@@ -50,7 +50,7 @@ const RemoveStaffForm = ({ officeId, staffPersonnel, removeStaff, onCloseRemoveF
     const classes = useStyles();
 
     const handleRemoveStaff = () => {
-        removeStaff(officeId, staffPersonnel);
+        removeStaff(officeId, staffPersonnel.id);
         onCloseRemoveForm();
     };
 

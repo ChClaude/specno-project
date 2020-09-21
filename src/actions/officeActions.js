@@ -137,6 +137,7 @@ export const addStaff = (id, staff) => dispatch => {
 };
 
 export const removeStaff = (id, staffId) => dispatch => {
+
     firebase.db.collection("offices")
         .doc(id)
         .collection("staff")
@@ -153,6 +154,7 @@ export const removeStaff = (id, staffId) => dispatch => {
 };
 
 export const editStaff = (id, staff) => dispatch => {
+
     firebase.db.collection("offices")
         .doc(id)
         .collection("staff")

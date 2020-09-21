@@ -54,12 +54,12 @@ const Staff = ({staffPersonnel, onDeleteMenuItemClick, onEditMenuItemClick}) => 
                     </IconButton>
                     <CustomMenu
                         anchorEl={anchorEl} onClose={handleClose}
-                        onDeleteMenuItemClick={(event) => {
-                            onDeleteMenuItemClick(event);
+                        onDeleteMenuItemClick={() => {
+                            onDeleteMenuItemClick();
                             handleClose();
                         }}
                         onEditMenuItemClick={(event) => {
-                            onEditMenuItemClick(event);
+                            onEditMenuItemClick();
                             handleClose();
                         }}
                     />

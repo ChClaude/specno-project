@@ -26,7 +26,9 @@ const Office = (props) => {
 
     const classes = useStyles();
     const {match, getOffice, getStaff, office, staff} = props;
-    const [showAffOfficeForm, setShowAffOfficeForm] = useState(false);
+    const [showAfdOfficeForm, setShowAddOfficeForm] = useState(false);
+
+    const [showFormCheckValues, setShowFormCheckValues] = useState([]);
 
     useEffect(() => {
         getOffice(match.params.officeId);
@@ -36,18 +38,43 @@ const Office = (props) => {
         getStaff(match.params.officeId);
     }, [getStaff, match.params.officeId]);
 
+    useEffect(() => {
+        let values = [];
+
+        if (staff.length > 0) {
+            staff.forEach(staff => {
+                values.push({id: staff.id, showEditOfficeForm: false, showRemoveOfficeForm: false})
+            });
+
+            setShowFormCheckValues(values);
+        }
+
+    }, [staff]);
+
     const handleOnToggleStaffForm = () => {
-        setShowAffOfficeForm(!showAffOfficeForm);
+        setShowAddOfficeForm(!showAfdOfficeForm);
     };
 
-    const handleOnDeleteMenuItemClick = (event) => {
-        console.log(event.target);
-        console.log("On delete menu item click");
+    const handleOnDeleteMenuItemClick = (id) => {
+        let displayValues = [...showFormCheckValues];
+
+        showFormCheckValues.forEach((value, index) => {
+            if (value.id === id) {
+                displayValues[index].showRemoveStaffForm = !displayValues[index].showRemoveStaffForm;
+                setShowFormCheckValues(displayValues);
+            }
+        });
     };
 
-    const handleOnEditMenuItemClick = (event) => {
-        console.log(event.target);
-        console.log("On edit menu item click");
+    const handleOnEditMenuItemClick = (id) => {
+        let displayValues = [...showFormCheckValues];
+
+        showFormCheckValues.forEach((value, index) => {
+            if (value.id === id) {
+                displayValues[index].showEditStaffForm = !displayValues[index].showEditStaffForm;
+                setShowFormCheckValues(displayValues);
+            }
+        });
     };
 
 
@@ -73,32 +100,44 @@ const Office = (props) => {
                         </Button>
                     </Grid>
 
-                    {staff.map(personnel => (
-                        <Grid item xs={12} key={personnel.id}>
-                            <Staff
-                                staffPersonnel={personnel}
-                                onDeleteMenuItemClick={handleOnDeleteMenuItemClick}
-                                onEditMenuItemClick={handleOnEditMenuItemClick}
-                            />
-                            <div className={clsx("removeofficeform")}>
-                                <RemoveStaffForm
+                    {showFormCheckValues.length && staff.map(personnel => {
+
+                        let currentIndex;
+                        showFormCheckValues.forEach((value, index) => {
+                            if (value.id === personnel.id) {
+                                currentIndex = index;
+                            }
+                        });
+
+                        return (
+                            <Grid item xs={12} key={personnel.id}>
+                                <Staff
                                     staffPersonnel={personnel}
-                                    officeId={match.params.officeId}
-                                    onCloseRemoveForm={handleOnEditMenuItemClick}
+                                    onDeleteMenuItemClick={() => handleOnDeleteMenuItemClick(personnel.id)}
+                                    onEditMenuItemClick={() => handleOnEditMenuItemClick(personnel.id)}
                                 />
-                            </div>
-                            <div className={clsx("removeofficeform")}>
-                                <EditStaffForm
-                                    staffPersonnel={personnel}
-                                    officeId={match.params.officeId}
-                                    onCloseEditRemoveForm={handleOnEditMenuItemClick}
-                                />
-                            </div>
-                        </Grid>
-                    ))}
+                                <div className={clsx("removeofficeform",
+                                    showFormCheckValues[currentIndex].showRemoveStaffForm && "show")}>
+                                    <RemoveStaffForm
+                                        staffPersonnel={personnel}
+                                        officeId={match.params.officeId}
+                                        onCloseRemoveForm={() => handleOnDeleteMenuItemClick(personnel.id)}
+                                    />
+                                </div>
+                                <div className={clsx("removeofficeform",
+                                    showFormCheckValues[currentIndex].showEditStaffForm && "show")}>
+                                    <EditStaffForm
+                                        staffPersonnel={personnel}
+                                        officeId={match.params.officeId}
+                                        onCloseEditRemoveForm={() => handleOnEditMenuItemClick(personnel.id)}
+                                    />
+                                </div>
+                            </Grid>
+                        );
+                    })}
                 </Grid>
             </Container>
-            <div className={clsx("addofficeform", showAffOfficeForm && "show" )}>
+            <div className={clsx("addofficeform", showAfdOfficeForm && "show" )}>
                 <AddStaff onCloseAddOfficeForm={handleOnToggleStaffForm} id={match.params.officeId} />
             </div>
         </div>

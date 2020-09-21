@@ -28,18 +28,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const EditStaffForm = ({ officeId, staffPersonnel, onCloseEditRemoveForm }) => {
+const EditStaffForm = ({ officeId, staffPersonnel, onCloseEditRemoveForm, editStaff }) => {
 
     const [firstName, setFirstName] = useState(staffPersonnel.firstName);
     const [lastName, setLastName] = useState(staffPersonnel.lastName);
 
     const classes = useStyles();
 
-    const handleSaveStaff = () => {
+    const handleSaveStaff = (event) => {
+
+        event.preventDefault();
+
         const personnel = {
+            id: staffPersonnel.id,
             firstName: firstName,
             lastName: lastName
         };
+
 
         editStaff(officeId, personnel);
 
@@ -47,6 +52,14 @@ const EditStaffForm = ({ officeId, staffPersonnel, onCloseEditRemoveForm }) => {
         setLastName('');
 
         onCloseEditRemoveForm();
+    };
+
+    const handleOnChange = (event) => {
+        if (event.target.name === "firstName") {
+            setFirstName(event.target.value);
+        } else if (event.target.name === "lastName") {
+            setLastName(event.target.value);
+        }
     };
 
     return (
@@ -66,21 +79,21 @@ const EditStaffForm = ({ officeId, staffPersonnel, onCloseEditRemoveForm }) => {
                     <form className={classes.formRoot} onSubmit={handleSaveStaff}>
                         <div>
                             <TextField
-                                id="firstName"
                                 label="First Name"
                                 name="firstName"
                                 type="text"
                                 value={firstName}
+                                onChange={handleOnChange}
                                 fullWidth
                             />
                         </div>
                         <div style={{ marginTop: '10px'}}>
                             <TextField
-                                id="lastName"
                                 label="Last Name"
                                 name="lastName"
                                 type="text"
                                 value={lastName}
+                                onChange={handleOnChange}
                                 fullWidth
                             />
                         </div>
@@ -100,7 +113,8 @@ const EditStaffForm = ({ officeId, staffPersonnel, onCloseEditRemoveForm }) => {
 EditStaffForm.propTypes = {
     staffPersonnel: PropTypes.object.isRequired,
     officeId: PropTypes.string.isRequired,
-    onCloseEditRemoveForm: PropTypes.func.isRequired
+    onCloseEditRemoveForm: PropTypes.func.isRequired,
+    editStaff: PropTypes.func.isRequired
 };
 
 
