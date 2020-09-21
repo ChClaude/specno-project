@@ -19,7 +19,7 @@ export const getOffices = () => dispatch => {
         });
     });
 
-    // this is only for after testing
+    // this is only for after testing to avoid reading often from firebase
     /*let offices = [
         {
             id: 1,
@@ -90,7 +90,7 @@ export const addOffice = (office) => dispatch => {
 
 
 export const removeOffice = (office) => dispatch => {
-    /*firebase.db.collection("offices").doc(office.id).delete().then(function() {
+    firebase.db.collection("offices").doc(office.id).delete().then(function() {
         console.log("Document successfully deleted!");
         dispatch({
             type: REMOVE_OFFICE,
@@ -98,14 +98,14 @@ export const removeOffice = (office) => dispatch => {
         });
     }).catch(function(error) {
         console.error("Error removing document: ", error);
-    });*/
+    });
 
     // only for testing
-    console.log(office);
+    /*console.log(office);
     dispatch({
         type: REMOVE_OFFICE,
         payload: office.id
-    });
+    });*/
 };
 
 export const editOffice = (office) => dispatch => {
@@ -121,8 +121,9 @@ export const editOffice = (office) => dispatch => {
             console.error("Error writing document: ", error);
         });
 
-    dispatch({
+    // only for testing
+    /*dispatch({
         type: EDIT_OFFICE,
         payload: office
-    });
+    });*/
 };
