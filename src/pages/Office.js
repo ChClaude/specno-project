@@ -13,6 +13,7 @@ import {connect} from "react-redux";
 import AddStaff from "../components/Staff/AddStaff";
 import clsx from "clsx";
 import RemoveStaffForm from "../components/Staff/RemoveStaffForm";
+import EditStaffForm from "../components/Staff/EditStaffForm";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,11 +40,13 @@ const Office = (props) => {
         setShowAffOfficeForm(!showAffOfficeForm);
     };
 
-    const handleOnDeleteMenuItemClick = () => {
+    const handleOnDeleteMenuItemClick = (event) => {
+        console.log(event.target);
         console.log("On delete menu item click");
     };
 
-    const handleOnEditMenuItemClick = () => {
+    const handleOnEditMenuItemClick = (event) => {
+        console.log(event.target);
         console.log("On edit menu item click");
     };
 
@@ -78,7 +81,18 @@ const Office = (props) => {
                                 onEditMenuItemClick={handleOnEditMenuItemClick}
                             />
                             <div className={clsx("removeofficeform")}>
-                                <RemoveStaffForm/>
+                                <RemoveStaffForm
+                                    staffPersonnel={personnel}
+                                    officeId={match.params.officeId}
+                                    onCloseRemoveForm={handleOnEditMenuItemClick}
+                                />
+                            </div>
+                            <div className={clsx("removeofficeform")}>
+                                <EditStaffForm
+                                    staffPersonnel={personnel}
+                                    officeId={match.params.officeId}
+                                    onCloseEditRemoveForm={handleOnEditMenuItemClick}
+                                />
                             </div>
                         </Grid>
                     ))}
