@@ -7,6 +7,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import {Box} from "@material-ui/core";
 import {Link as RouterLink} from "react-router-dom";
+import PropTypes from "prop-types";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
     title: {
         marginTop: theme.spacing(1),
-        flexBasis: '90px'
+        flexBasis: '90px',
     },
 
     subInfo: {
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // TODO: this component needs to be optimized for mobile view
-export default function StaffAppBar() {
+export default function StaffAppBar({office}) {
 
     const classes = useStyles();
 
@@ -54,25 +55,31 @@ export default function StaffAppBar() {
                         </IconButton>
                     </RouterLink>
 
-                    <Typography className={classes.title} variant="h5" noWrap>
-                        Specno
+                    <Typography className={classes.title} variant="h5" >
+                        { office.name }
                     </Typography>
                     <Box className={classes.subInfo}>
-                        <Typography className={classes.title} variant="body1" noWrap>
-                            Address: <span>1st floor, Newlink Building, 1 new Street, Paarl, 4696</span>
+                        <Typography variant="body1" noWrap>
+                            Address: <span>{office.location}</span>
                         </Typography>
-                        <Typography className={classes.title} variant="body1" noWrap>
-                            Email: <span>info@specno.com</span>
+                        <Typography variant="body1" noWrap>
+                            Email: <span>{office.email}</span>
                         </Typography>
-                        <Typography className={classes.title} variant="body1" noWrap>
-                            Office Tell: <span>083 256 1245</span>
+                        <Typography variant="body1" noWrap>
+                            Office Tell: <span>{ office.tellNumber }</span>
                         </Typography>
-                        <Typography className={classes.title} variant="body1" noWrap>
-                            Max Capacity: <span>9</span>
+                        <Typography variant="body1" noWrap>
+                            Max Capacity: <span>{office.maxNumOccupants}</span>
                         </Typography>
                     </Box>
                 </Toolbar>
             </AppBar>
         </>
     );
-}
+};
+
+// TODO: office should be required as prop, fix undefined bug
+AppBar.propTypes = {
+    // office: PropTypes.object.isRequired
+    office: PropTypes.object
+};

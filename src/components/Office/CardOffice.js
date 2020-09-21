@@ -123,7 +123,7 @@ export default function CardOffice({ office, onEditMenuItemClick, onDeleteMenuIt
                         <Link href="#" onClick={preventDefault}>
                             { email }
                         </Link>
-                        <RouterLink to={`/offices/${id}`} style={{marginLeft: "8px", position: "relative", bottom: "25px"}}>View</RouterLink>
+                        <RouterLink to={`/offices/${id}`} style={{marginLeft: "8px", position: "relative", bottom: "25px", color: "blue"}}>View</RouterLink>
 
 
                         <Box

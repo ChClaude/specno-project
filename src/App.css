@@ -1,3 +1,8 @@
+a {
+    color: white;
+    text-decoration: none;
+}
+
 .addofficeform {
     min-height: 100%;
     width: 100%;
@@ -37,4 +42,5 @@
 .hide {
     display: none;
 }
+
 

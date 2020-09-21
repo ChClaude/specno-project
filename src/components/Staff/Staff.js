@@ -8,6 +8,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import CustomMenu from "../CustomMenu";
+import PropTypes from "prop-types";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Staff = () => {
+const Staff = ({staffPersonnel}) => {
 
     const classes = useStyles();
 
@@ -34,6 +35,14 @@ const Staff = () => {
         setAnchorEl(null);
     };
 
+    const handleOnDeleteMenuItemClick = () => {
+        console.log("On delete menu item click");
+    };
+
+    const handleOnEditMenuItemClick = () => {
+        console.log("On edit menu item click");
+    };
+
     return (
         <Paper elevation={2}>
             <Grid container className={classes.gridContainer}>
@@ -44,18 +53,26 @@ const Staff = () => {
                 </Grid>
                 <Grid item xs={8} style={{display: "flex", alignItems: "center"}}>
                     <Typography>
-                        Jacques Jordan
+                        {staffPersonnel.firstName} {staffPersonnel.lastName}
                     </Typography>
                 </Grid>
                 <Grid item xs={1}>
                     <IconButton onClick={handleClick}>
                         <MoreVertIcon/>
                     </IconButton>
-                    <CustomMenu anchorEl={anchorEl} handleClose={handleClose}/>
+                    <CustomMenu
+                        anchorEl={anchorEl} onClose={handleClose}
+                        onDeleteMenuItemClick={handleOnDeleteMenuItemClick}
+                        onEditMenuItemClick={handleOnEditMenuItemClick}
+                    />
                 </Grid>
             </Grid>
         </Paper>
     );
+};
+
+Staff.propTypes = {
+    staffPersonnel: PropTypes.object.isRequired
 };
 
 export default Staff;

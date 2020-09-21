@@ -1,13 +1,20 @@
-import {ADD_OFFICE, EDIT_OFFICE, GET_OFFICES, REMOVE_OFFICE} from "../actions/types";
+import {ADD_OFFICE, EDIT_OFFICE, GET_OFFICE, GET_OFFICES, GET_STAFF, REMOVE_OFFICE} from "../actions/types";
 
 const initialState = {
     items: [],
+    item: {},
+    staff: []
 };
 
 export default function (state = initialState, action) {
     let updatedItems;
 
     switch (action.type) {
+        case GET_OFFICE:
+            return {
+                ...state,
+                item: action.payload
+            };
         case GET_OFFICES:
             return {
                 ...state,
@@ -44,6 +51,11 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 items: updatedItems
+            }
+        case GET_STAFF:
+            return {
+                ...state,
+                staff: action.payload
             }
         default:
             return state;

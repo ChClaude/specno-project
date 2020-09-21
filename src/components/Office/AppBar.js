@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import PropTypes from "prop-types";
+import {Link as RouterLink} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,9 +26,11 @@ export default function OfficeAppBar({onAddOfficeClick}) {
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar>
-                    <Typography variant="h6" className={classes.title}>
-                        Office Man
-                    </Typography>
+                    <RouterLink to="/" className={classes.title}>
+                        <Typography variant="h6">
+                            Office Man
+                        </Typography>
+                    </RouterLink>
                     <Button variant="contained" onClick={onAddOfficeClick}>
                         Add Office
                     </Button>

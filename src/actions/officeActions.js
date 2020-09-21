@@ -1,4 +1,4 @@
-import {GET_OFFICES, ADD_OFFICE, REMOVE_OFFICE, EDIT_OFFICE} from "./types";
+import {ADD_OFFICE, EDIT_OFFICE, GET_OFFICE, GET_OFFICES, GET_STAFF, REMOVE_OFFICE} from "./types";
 import firebase from "../firebase";
 
 export const getOffices = () => dispatch => {
@@ -74,29 +74,85 @@ export const getOffices = () => dispatch => {
     });*/
 }
 
+export const getOffice = (id) => dispatch => {
+
+    firebase.db.collection("offices").doc(id).get()
+        .then(function (doc) {
+            if (doc.exists) {
+                // console.log("Document data:", doc.data());
+                dispatch({
+                    type: GET_OFFICE,
+                    payload: doc.data()
+                });
+            } else {
+                console.log("No such document!");
+            }
+        }).catch(function (error) {
+        console.log("Error getting document:", error);
+    });
+
+
+    // this is only for after testing to avoid reading often from firebase
+    /*let office = {
+                id: 1,
+                name: "Speno",
+                location: "1st floor, Newlink Building, 1 new Street, Paarl, 4696",
+                email: "info@specno.com",
+                tellNumber: "0832561245",
+                maxNumOccupants: 20,
+                color: "blue",
+           };
+
+    dispatch({
+        type: GET_OFFICE,
+        payload: office
+    });*/
+};
+
+export const getStaff = (id) => dispatch => {
+    firebase.db.collection("offices").doc(id).collection("staff")
+        .get()
+        .then(((querySnapshot) => {
+            let staff = [];
+
+            querySnapshot.forEach((doc) => {
+                staff.push({
+                    id: doc.id,
+                    ...doc.data()
+                });
+            });
+
+            dispatch({
+                type: GET_STAFF,
+                payload: staff
+            });
+        }))
+        .catch(() => console.log("Error getting the collection"));
+
+};
+
 export const addOffice = (office) => dispatch => {
     firebase.db.collection("offices").add(office)
-        .then(function(docRef) {
+        .then(function (docRef) {
             console.log("Document written with ID: ", docRef.id);
             dispatch({
                 type: ADD_OFFICE,
                 payload: office
             });
         })
-        .catch(function(error) {
+        .catch(function (error) {
             console.error("Error adding document: ", error);
         });
 };
 
-
 export const removeOffice = (office) => dispatch => {
-    firebase.db.collection("offices").doc(office.id).delete().then(function() {
+    firebase.db.collection("offices").doc(office.id).delete().then(function () {
         console.log("Document successfully deleted!");
         dispatch({
             type: REMOVE_OFFICE,
             payload: office.id
         });
-    }).catch(function(error) {
+    }).catch(function (error) {
         console.error("Error removing document: ", error);
     });
 
@@ -110,14 +166,14 @@ export const removeOffice = (office) => dispatch => {
 
 export const editOffice = (office) => dispatch => {
     firebase.db.collection("offices").doc(office.id).set(office)
-        .then(function() {
+        .then(function () {
             console.log("Document successfully written!");
             dispatch({
                 type: EDIT_OFFICE,
                 payload: office
             });
         })
-        .catch(function(error) {
+        .catch(function (error) {
             console.error("Error writing document: ", error);
         });
 
