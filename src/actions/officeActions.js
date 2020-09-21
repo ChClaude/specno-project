@@ -1,4 +1,13 @@
-import {ADD_OFFICE, EDIT_OFFICE, GET_OFFICE, GET_OFFICES, GET_STAFF, REMOVE_OFFICE, SET_STAFF} from "./types";
+import {
+    ADD_OFFICE,
+    ADD_STAFF,
+    EDIT_OFFICE,
+    GET_OFFICE,
+    GET_OFFICES,
+    GET_STAFF,
+    REMOVE_OFFICE,
+    SET_STAFF
+} from "./types";
 import firebase from "../firebase";
 
 export const getOffices = () => dispatch => {
@@ -136,6 +145,24 @@ export const setStaff = (staff) => dispatch => {
         type: SET_STAFF,
         payload: staff
     });
+};
+
+export const addStaff = (id, staff) => dispatch => {
+
+    firebase.db.collection("offices")
+        .doc(id)
+        .collection("staff")
+        .add(staff)
+        .then(function (docRef) {
+            console.log("Staff written with ID: ", docRef.id);
+            dispatch({
+                type: ADD_STAFF,
+                payload: staff
+            });
+        })
+        .catch(function (error) {
+            console.error("Error adding staff: ", error);
+        });
 };
 
 export const addOffice = (office) => dispatch => {

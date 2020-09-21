@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import AppBar from "../components/Staff/AppBar";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
@@ -10,6 +10,8 @@ import Staff from "../components/Staff/Staff";
 import PropTypes from "prop-types";
 import {getOffice, getStaff} from "../actions/officeActions";
 import {connect} from "react-redux";
+import AddStaff from "../components/Staff/AddStaff";
+import clsx from "clsx";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +24,7 @@ const Office = (props) => {
 
     const classes = useStyles();
     const {match, getOffice, getStaff, office, staff} = props;
+    const [showAffOfficeForm, setShowAffOfficeForm] = useState(false);
 
     useEffect(() => {
         getOffice(match.params.officeId);
@@ -30,6 +33,10 @@ const Office = (props) => {
     useEffect(() => {
         getStaff(match.params.officeId);
     }, [getStaff, match.params.officeId]);
+
+    const handleOnToggleStaffForm = () => {
+        setShowAffOfficeForm(!showAffOfficeForm);
+    };
 
 
     return (
@@ -49,7 +56,7 @@ const Office = (props) => {
                         </Typography>
                     </Grid>
                     <Grid item xs={4}>
-                        <Button variant="contained" color='primary'>
+                        <Button variant="contained" color='primary' onClick={handleOnToggleStaffForm}>
                             Add Staff
                         </Button>
                     </Grid>
@@ -61,6 +68,9 @@ const Office = (props) => {
                     ))}
                 </Grid>
             </Container>
+            <div className={clsx("addofficeform", showAffOfficeForm && "show" )}>
+                <AddStaff onCloseAddOfficeForm={handleOnToggleStaffForm} id={match.params.officeId} />
+            </div>
         </div>
     );
 };
